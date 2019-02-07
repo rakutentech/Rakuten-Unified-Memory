@@ -1,0 +1,13 @@
+A templated C++ library of signal processing algorithms and their fixed-point model.
+
+Entry file
+	main.cc
+
+Compilation
+	./autogen.sh && ./configure && make
+
+Documentation
+	Generate documentation using doxygen: doxygen Doxyfile
+	Documentation entry: doc/html/index.html
+
+See LICENSE for the license.

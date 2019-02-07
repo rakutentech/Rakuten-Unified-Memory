@@ -1,0 +1,36 @@
+cmake_minimum_required (VERSION 3.1)
+project (heartbeat C CXX)
+
+set (CMAKE_VERBOSE_MAKEFILE ON)
+set (CMAKE_CXX_STANDARD 11)
+
+set (CMAKE_CXX_FLAGS "-fno-stack-protector -Wall -Wextra -Wno-unused-parameter -g -O3 -march=native -msse4.2")
+set (CMAKE_C_FLAGS "-fno-stack-protector -Wall -Wextra -Wno-unused-parameter -g -O3 -march=native -msse4.2")
+
+set (FILES
+    Heartbeat.cpp
+    $ENV{RUM_HOME}/paxos/UDP_comms.cpp
+    $ENV{RUM_HOME}/paxos/paxos_timer.cpp
+    main.cpp
+)
+
+SET(ALL_LIBS
+	-Wl,--whole-archive
+	m pthread dl rt
+	-Wl,--no-whole-archive
+	boost_filesystem 
+	boost_system
+        crypto	
+)
+
+include_directories (
+  	${CMAKE_SOURCE_DIR}
+  	$ENV{RUM_HOME}/rum_master
+    $ENV{RUM_HOME}/paxos
+)
+
+link_directories (
+)
+
+ADD_EXECUTABLE(heartbeat ${FILES})
+TARGET_LINK_LIBRARIES(heartbeat ${ALL_LIBS} ${CMAKE_THREAD_LIBS_INIT})
