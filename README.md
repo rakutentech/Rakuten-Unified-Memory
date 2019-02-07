@@ -43,6 +43,7 @@ To compile a client application, the include files are found in RUM_HOME/rum_mas
 
 ### Applications
 A number of example aplications are included to show the different potential ways to use RUM:
+
 | Name | Description | Purpose | Location |
 |------|------|------|------|
 |Memory Test| A simple application to exercise the different functions of RUM.|To test correctness.|RUM_HOME/apps/mem_test|
